@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TOEIC 375 to 550 Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">TOEIC Practice System</p>
+        <h1>多益 375 到 550 練習系統</h1>
+        <p class="subtitle">以基礎文法、職場常用字、短篇閱讀與聽力文字題為主，每題作答後立即顯示詳解。</p>
+      </div>
+      <div class="goal-card" aria-label="目標分數">
+        <span>目前</span>
+        <strong>375</strong>
+        <span>目標 550</span>
+      </div>
+    </header>
+
+    <section class="summary-grid" aria-label="練習統計">
+      <div class="summary-item">
+        <span>已作答</span>
+        <strong id="answeredCount">0</strong>
+      </div>
+      <div class="summary-item">
+        <span>正確率</span>
+        <strong id="accuracyRate">0%</strong>
+      </div>
+      <div class="summary-item">
+        <span>連續答對</span>
+        <strong id="streakCount">0</strong>
+      </div>
+      <div class="summary-item">
+        <span>待複習</span>
+        <strong id="reviewCount">0</strong>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="side-panel" aria-label="練習設定">
+        <div class="field">
+          <label for="partFilter">題型</label>
+          <select id="partFilter">
+            <option value="all">全部題型</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="focusFilter">練習模式</label>
+          <select id="focusFilter">
+            <option value="all">全部題目</option>
+            <option value="unseen">未作答</option>
+            <option value="wrong">錯題複習</option>
+            <option value="starred">收藏題</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="difficultyFilter">難度</label>
+          <select id="difficultyFilter">
+            <option value="all">全部難度</option>
+            <option value="foundation">基礎</option>
+            <option value="bridge">往 550 橋接</option>
+          </select>
+        </div>
+
+        <div class="switch-row">
+          <label class="switch">
+            <input id="shuffleToggle" type="checkbox" checked>
+            <span>隨機出題</span>
+          </label>
+        </div>
+
+        <button class="primary action-wide" id="nextButton" type="button">下一題</button>
+        <button class="ghost action-wide" id="resetButton" type="button">重設紀錄</button>
+
+        <div class="progress-block">
+          <div class="progress-label">
+            <span>題庫進度</span>
+            <strong id="progressText">0 / 0</strong>
+          </div>
+          <div class="progress-bar"><span id="progressBar"></span></div>
+        </div>
+
+        <section class="review-panel">
+          <h2>錯題清單</h2>
+          <div id="wrongList" class="wrong-list"></div>
+        </section>
+      </aside>
+
+      <section class="quiz-panel" aria-live="polite">
+        <div class="question-meta">
+          <span class="tag" id="partLabel">Part</span>
+          <span class="tag" id="skillLabel">Skill</span>
+          <span class="tag" id="difficultyLabel">Difficulty</span>
+          <button class="icon-button" id="starButton" type="button" aria-label="收藏題目" title="收藏題目">☆</button>
+        </div>
+
+        <p class="question-number" id="questionNumber">Question 1</p>
+        <div class="prompt-box" id="promptBox"></div>
+        <h2 class="question-text" id="questionText">題庫載入中...</h2>
+        <div class="options" id="options"></div>
+        <div class="actions" id="actions"></div>
+        <section class="explanation" id="explanation" aria-live="polite"></section>
+      </section>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>
