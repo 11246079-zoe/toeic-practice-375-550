@@ -58,12 +58,13 @@ function partNames() {
 }
 
 function getPool() {
+  const focus = els.focusFilter.value;
   return questions.filter((question) => {
     if (els.partFilter.value !== "all" && question.part !== els.partFilter.value) return false;
     if (els.difficultyFilter.value !== "all" && question.level !== els.difficultyFilter.value) return false;
-    if (els.focusFilter.value === "unseen" && state.answered[question.id]) return false;
-    if (els.focusFilter.value === "wrong" && !state.wrong[question.id]) return false;
-    if (els.focusFilter.value === "starred" && !state.starred[question.id]) return false;
+    if ((focus === "all" || focus === "unseen") && state.answered[question.id]) return false;
+    if (focus === "wrong" && !state.wrong[question.id]) return false;
+    if (focus === "starred" && !state.starred[question.id]) return false;
     return true;
   });
 }
@@ -101,7 +102,7 @@ function renderQuestion() {
     els.questionNumber.textContent = "請調整篩選條件";
     els.promptBox.className = "prompt-box";
     els.promptBox.textContent = "";
-    els.questionText.textContent = "這個篩選目前沒有題目。";
+    els.questionText.textContent = "這個篩選目前沒有可練習的新題目。可以切到錯題複習、收藏題，或重設紀錄再練一次。";
     els.starButton.disabled = true;
     return;
   }
