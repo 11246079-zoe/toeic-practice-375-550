@@ -424,6 +424,23 @@ h1 {
   font-size: 20px;
 }
 
+.option-meanings {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border: 1px solid #d8e0e8;
+  border-radius: 8px;
+  background: #f8fafb;
+}
+
+.option-meanings ul {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.option-meanings li {
+  margin: 4px 0;
+}
+
 .result-correct {
   color: var(--good);
 }
